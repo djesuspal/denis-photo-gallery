@@ -200,13 +200,31 @@ export default function PersonalGallery() {
             <h2 className="text-4xl font-bold mb-8 text-amber-300">Get in Touch</h2>
             <p className="text-xl text-gray-300 mb-8">Connect with me on social media</p>
             <div className="mt-12 flex justify-center space-x-6">
-              <a href="#" className="text-gray-400 hover:text-amber-300 transition-colors duration-200">
+              <a 
+                href="https://www.instagram.com/denisj.palma" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-amber-300 transition-colors duration-200"
+                aria-label="Instagram Profile"
+              >
                 <Instagram className="w-8 h-8" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-amber-300 transition-colors duration-200">
+              <a 
+                href="https://x.com/dpalab123" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-amber-300 transition-colors duration-200"
+                aria-label="Twitter Profile"
+              >
                 <Twitter className="w-8 h-8" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-amber-300 transition-colors duration-200">
+              <a 
+                href="https://www.facebook.com/denis.jesus.palma.abanto" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-amber-300 transition-colors duration-200"
+                aria-label="Facebook Profile"
+              >
                 <Facebook className="w-8 h-8" />
               </a>
             </div>
