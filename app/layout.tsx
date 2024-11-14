@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Denis Jesus Palma Abanto - Personal Photo Gallery',
     description: 'Explore Denis Jesus Palma Abanto\'s personal photo collection. A visual journey through moments and memories.',
-    url: 'https://your-domain.com',
+    url: 'https://denis.pe',
     siteName: 'Denis Jesus Palma Abanto Gallery',
     images: [
       {
