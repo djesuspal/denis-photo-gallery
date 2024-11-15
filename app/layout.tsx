@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Denis Jesus Palma Abanto | Personal Photo Gallery',
-  description: 'Welcome to Denis Jesus Palma Abanto\'s (Denis Palma Abanto) personal photo gallery. Explore a collection of moments and memories capturing life\'s journey through personal photographs.',
+  description: 'Welcome to Denis Jesus Palma Abanto\'s (Denis Palma Abanto) personal photo gallery.',
   keywords: 'Denis Jesus Palma Abanto, Denis Palma Abanto, personal gallery, photo collection, personal photos, memories',
   openGraph: {
     title: 'Denis Jesus Palma Abanto - Personal Photo Gallery',
