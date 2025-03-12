@@ -118,9 +118,9 @@ export default function AboutPage() {
                     <ul className="list-disc pl-5 text-gray-600 space-y-1">
                       <li>Web Development</li>
                       <li>UI/UX Design</li>
-                      <li>Digital Photography</li>
-                      <li>Content Creation</li>
-                      <li>SEO Optimization</li>
+                      <li>DevOps</li>
+                      <li>Blockchain</li>
+                      <li>Cryptography</li>
                     </ul>
                   </div>
                   <div>
