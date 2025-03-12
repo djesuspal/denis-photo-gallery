@@ -4,12 +4,16 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getBlogPostBySlug, getAllBlogPosts } from '@/data/blog-posts';
 
-// Simplify the approach to match Next.js expectations
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: { slug: string } 
-}): Promise<Metadata> {
+// Define the params type as expected by Next.js
+type Props = {
+  params: { slug: string };
+  searchParams: Record<string, string | string[] | undefined>;
+};
+
+// Generate metadata for the page
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
   const post = getBlogPostBySlug(params.slug);
   
   if (!post) {
@@ -46,6 +50,7 @@ export async function generateMetadata({
   };
 }
 
+// Generate static params for all blog posts
 export function generateStaticParams() {
   const posts = getAllBlogPosts();
   
@@ -54,8 +59,8 @@ export function generateStaticParams() {
   }));
 }
 
-// Simplified page component signature
-export default function Page({ params }: { params: { slug: string } }) {
+// The page component
+export default function Page({ params }: Props) {
   const post = getBlogPostBySlug(params.slug);
   
   if (!post) {
