@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, Instagram, Twitter, Facebook } from 'lucide-react'
@@ -13,14 +14,15 @@ interface ImageData {
   height: number;
 }
 
-// Generate array of image paths with personal context
+// Generate array of image paths with enhanced descriptions for SEO
 const generateImagePaths = (): ImageData[] => {
-  // Add personal context descriptions
+  // Add more descriptive and SEO-friendly descriptions
   const descriptions: string[] = [
-    'personal photo', 'casual portrait', 'lifestyle moment',
-    'social gathering', 'everyday life', 'candid moment',
-    'personal style', 'daily life', 'memorable moment',
-    'casual photography'
+    'portrait of Denis Jesus Palma Abanto in casual setting',
+    'professional headshot of Denis Jesus Palma Abanto',
+    'Denis Jesus Palma Abanto candid photo during creative work',
+    'Denis Jesus Palma Abanto outdoor photography in natural light',
+    'Denis Jesus Palma Abanto lifestyle portrait with urban background'
   ]
 
   return Array.from({ length: 41 }, (_, i) => {
@@ -79,32 +81,21 @@ export default function PersonalGallery() {
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-amber-300">Denis Palma Abanto</h1>
           <ul className="flex space-x-6">
-            {['home', 'about', 'gallery', 'contact'].map((section) => (
-              <li key={section}>
-                <a
-                  href={`#${section}`}
-                  className="text-gray-100 hover:text-amber-300 transition-colors duration-200"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const element = document.querySelector(`#${section}`);
-                    if (element) {
-                      const offset = 80;
-                      const bodyRect = document.body.getBoundingClientRect().top;
-                      const elementRect = element.getBoundingClientRect().top;
-                      const elementPosition = elementRect - bodyRect;
-                      const offsetPosition = elementPosition - offset;
-
-                      window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                      });
-                    }
-                  }}
-                >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a href="#home" className="text-amber-300 hover:text-amber-200 transition-colors duration-200">Home</a>
+            </li>
+            <li>
+              <Link href="/denis-jesus-palma-abanto" className="text-gray-100 hover:text-amber-300 transition-colors duration-200">About</Link>
+            </li>
+            <li>
+              <Link href="/blog" className="text-gray-100 hover:text-amber-300 transition-colors duration-200">Blog</Link>
+            </li>
+            <li>
+              <a href="#gallery" className="text-gray-100 hover:text-amber-300 transition-colors duration-200">Gallery</a>
+            </li>
+            <li>
+              <a href="#contact" className="text-gray-100 hover:text-amber-300 transition-colors duration-200">Contact</a>
+            </li>
           </ul>
         </nav>
       </header>
@@ -112,10 +103,15 @@ export default function PersonalGallery() {
       <main className="pt-16">
         <section id="home" className="py-20 text-center bg-gray-900 text-gray-100">
           <h2 className="text-5xl font-bold mb-4 text-amber-300">Denis Jesus Palma Abanto</h2>
-          <p className="text-xl text-gray-300 mb-8">Personal Photo Gallery</p>
-          <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-gray-900">
-            <a href="#gallery">Explore Gallery</a>
-          </Button>
+          <p className="text-xl text-gray-300 mb-8">Personal Photo Gallery & Blog</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-gray-900">
+              <a href="#gallery">Explore Gallery</a>
+            </Button>
+            <Button size="lg" className="bg-gray-700 hover:bg-gray-800 text-gray-100">
+              <Link href="/blog">Read My Blog</Link>
+            </Button>
+          </div>
         </section>
 
         <section id="about" className="py-24 bg-gray-100">
@@ -125,7 +121,7 @@ export default function PersonalGallery() {
                 <div className="relative w-[400px] h-[400px]">
                   <Image
                     src={profileImage}
-                    alt="Denis Jesus Palma Abanto"
+                    alt="Portrait of Denis Jesus Palma Abanto"
                     fill
                     className="rounded-full shadow-xl border-4 border-amber-300 object-cover"
                     priority
@@ -136,11 +132,16 @@ export default function PersonalGallery() {
             <div className="md:w-1/2 md:pl-12">
               <h2 className="text-4xl font-bold mb-6 text-gray-800">About Me</h2>
               <p className="text-gray-600 mb-4 text-lg leading-relaxed">
-                Hello! I'm Denis Jesus Palma Abanto, and this is my personal photo gallery where I share moments and memories from my life's journey.
+                Hello! I&apos;m Denis Jesus Palma Abanto, and this is my personal photo gallery and blog where I share moments, 
+                memories, and thoughts from my life&apos;s journey.
               </p>
-              <p className="text-gray-600 mb-4 text-lg leading-relaxed">
-                This collection of photos represents various moments in my life, each telling its own unique story and capturing memories that I cherish.
+              <p className="text-gray-600 mb-6 text-lg leading-relaxed">
+                This collection of photos represents various moments in my life, each telling its own unique story and 
+                capturing memories that I cherish.
               </p>
+              <Button className="bg-amber-500 hover:bg-amber-600 text-gray-900">
+                <Link href="/denis-jesus-palma-abanto">Learn More About Me</Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -205,7 +206,7 @@ export default function PersonalGallery() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-amber-300 transition-colors duration-200"
-                aria-label="Instagram Profile"
+                aria-label="Instagram Profile of Denis Jesus Palma Abanto"
               >
                 <Instagram className="w-8 h-8" />
               </a>
@@ -214,7 +215,7 @@ export default function PersonalGallery() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-amber-300 transition-colors duration-200"
-                aria-label="Twitter Profile"
+                aria-label="Twitter Profile of Denis Jesus Palma Abanto"
               >
                 <Twitter className="w-8 h-8" />
               </a>
@@ -223,7 +224,7 @@ export default function PersonalGallery() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-amber-300 transition-colors duration-200"
-                aria-label="Facebook Profile"
+                aria-label="Facebook Profile of Denis Jesus Palma Abanto"
               >
                 <Facebook className="w-8 h-8" />
               </a>
@@ -235,6 +236,13 @@ export default function PersonalGallery() {
       <footer className="bg-gray-900 text-gray-400 py-8">
         <div className="container mx-auto px-4 text-center">
           <p>&copy; {new Date().getFullYear()} Denis Jesus Palma Abanto. All rights reserved.</p>
+          <div className="mt-4 flex justify-center space-x-4 text-sm">
+            <Link href="/" className="hover:text-amber-300 transition-colors duration-200">Home</Link>
+            <Link href="/denis-jesus-palma-abanto" className="hover:text-amber-300 transition-colors duration-200">About</Link>
+            <Link href="/blog" className="hover:text-amber-300 transition-colors duration-200">Blog</Link>
+            <a href="#gallery" className="hover:text-amber-300 transition-colors duration-200">Gallery</a>
+            <a href="#contact" className="hover:text-amber-300 transition-colors duration-200">Contact</a>
+          </div>
         </div>
       </footer>
     </div>
